@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+<div class="page-header">
+    <h1>
+        <a href="/">{{ personnage.id_personnage }}</a>
+    </h1>
+    <img src="{{ personnage.photo }}" alt="Photo de {{ personnage.nom }}" class="img-responsive img-thumbnail">
+    <div class="card-content">
+
+        <p><strong>Type :</strong> {{ personnage.type_personnage }}</p>
+        <p><strong>État :</strong> {{ personnage.etat }}</p>
+        <p><strong>Lieu Actuel :</strong> {{ personnage.lieu.nom }}</p>
+    </div>
+    <form method="POST" class="post-form">{% csrf_token %}
+        <b> Changer : </b> {{ form.as_ul }}
+        <button type="submit" class="btn btn-outline-light">OK</button>
+        <a href="{% url 'post_list' %}">Back</a>
+    </form>
+</div>
+
+
+{% endblock %}

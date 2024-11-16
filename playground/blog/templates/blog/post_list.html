@@ -1,0 +1,34 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+                <h1>Liste des Personnages</h1>
+                {% for personnage in personnages %}
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="{{ personnage.photo }}" alt="Photo de {{ personnage.nom }}" class="img-responsive img-thumbnail">
+                            <h3><a href="{% url 'personnage_detail' id_personnage=personnage.id_personnage %}">{{ personnage.nom }}</a></h3>
+                            <div class="card-content">
+
+                                <p><strong>Type :</strong> {{ personnage.type_personnage }}</p>
+                                <p><strong>État :</strong> {{ personnage.etat }}</p>
+                                <p><strong>Lieu Actuel :</strong> {{ personnage.lieu.nom }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+                <h1>Liste des Lieux</h1>
+                {% for lieu in lieux %}
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="{{ lieu.photo }}" alt="Photo de {{ lieu.nom }}" class="img-responsive img-thumbnail">
+                            <div class="card-content">
+                                <h3>{{ lieu.nom }}</h3>
+                                <p><strong>Capacité Max :</strong> {{ lieu.capacite }}</p>
+                                <p><strong>Nombre Actuel :</strong> {{ lieu.nombre_actuel }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+{% endblock %}
+
