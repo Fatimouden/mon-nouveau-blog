@@ -4,7 +4,7 @@ from .models import Personnage, Lieu
 class MoveForm(forms.ModelForm):
     class Meta:
         model = Personnage
-        fields = ('lieu',)  # Champ pour changer le lieu du personnage
+        fields = ('lieu',)
         labels = {
             'lieu': "Nouveau Lieu",
         }
@@ -16,7 +16,7 @@ class MoveForm(forms.ModelForm):
 
     def save(self, commit=True):
         personnage = super().save(commit=False)
-        personnage.transition_etat(personnage.etat)
+        personnage.transition_etat()
         if commit:
             personnage.save()
         return personnage

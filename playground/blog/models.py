@@ -1,7 +1,6 @@
 from django.db import models
 
 class Lieu(models.Model):
-    # Identifiant du lieu, c'est la clé primaire
     id_equip = models.CharField(max_length=100, primary_key=True)
     nom = models.CharField(max_length=100)  # Nom du lieu (ex: Auberge)
     capacite = models.IntegerField()  # Capacité maximale du lieu
@@ -24,7 +23,7 @@ class Lieu(models.Model):
             self.nombre_actuel -= 1
             self.save()
 
-    def _str_(self):
+    def __str__(self):
         return self.nom
 
     @property
@@ -33,9 +32,9 @@ class Lieu(models.Model):
         return Personnage.objects.filter(lieu=self)
 
 class Personnage(models.Model):
-    # Identifiant du personnage, c'est la clé primaire
+
     id_personnage = models.CharField(max_length=100, primary_key=True)
-    nom = models.CharField(max_length=100)  # Nom du personnage (ex: Lancelot)
+    nom = models.CharField(max_length=100)
     etat = models.CharField(
         max_length=20,
         choices=[
@@ -46,13 +45,12 @@ class Personnage(models.Model):
             ('Prêt', 'Prêt')
         ]
     )
-    type_personnage = models.CharField(max_length=20)  # Type du personnage (ex: Chevalier, Mage)
-    photo = models.CharField(max_length=200)  # Lien vers une image du personnage
-    lieu = models.ForeignKey(Lieu, on_delete=models.CASCADE)  # Lieu actuel du personnage
+    type_personnage = models.CharField(max_length=20)
+    photo = models.CharField(max_length=200)
+    lieu = models.ForeignKey(Lieu, on_delete=models.CASCADE)
 
 
     def changer_etat(self, nouvel_etat, nouveau_lieu):
-        # Code pour changer l'état du personnage (déjà présent dans ton modèle)
         if nouveau_lieu.est_disponible():
             self.etat = nouvel_etat
             if self.lieu:
@@ -61,8 +59,8 @@ class Personnage(models.Model):
             self.lieu = nouveau_lieu
             self.save()
 
-    # Nouvelle méthode pour gérer la transition d'état
-    def transition_etat(self, nouvel_etat):
+
+    def transition_etat(self):
         transitions = {
             'Fatigué': ('Rassasié', 'Auberge'),
             'Rassasié': ('Entraîné', 'Forêt Enchantée'),
@@ -76,5 +74,5 @@ class Personnage(models.Model):
             nouveau_lieu = Lieu.objects.get(nom=nom_lieu)
             self.changer_etat(nouvel_etat, nouveau_lieu)
 
-    def _str_(self):
+    def __str__(self):
         return self.nom

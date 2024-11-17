@@ -1,90 +1,168 @@
-/* Styles globaux */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap');
+
+
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa;
-    color: #333;
+    font-family: 'Poppins', sans-serif;
+    background-color: #2e1a47;
+    color: #dcd6f7;
     margin: 20px;
 }
 
-/* Titres principaux */
-h1 {
+.navbar {
+    display: flex; /* Utilisation de flexbox pour organiser les éléments */
+    justify-content: space-between; /* Espace égal entre les éléments */
+    align-items: center; /* Centre verticalement le contenu */
+    padding: 10px 20px; /* Espacement interne pour un meilleur rendu */
+    margin-bottom: 20px;
+    background-color: #5a189a;
+    border-radius: 5px;
+}
+
+.navbar-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8em;
+    color: #f0e1ff;
     text-align: center;
-    font-size: 2.5em;
-    color: #007bff;
+    margin: 0;
+}
+
+.navbar-nav {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-nav .nav-item {
+    margin-left: 15px;
+}
+
+.navbar-nav .nav-link {
+    color: #f0e1ff;
+    padding: 8px 15px;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #d4a5ed;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    font-size: 3em; /* Plus grand pour un effet visuel plus fort */
+    color: #c77dff;
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    border-bottom: 3px solid #007bff;
+    border-bottom: 3px solid #9d4edd;
     display: inline-block;
     padding-bottom: 5px;
 }
 
-/* Conteneur général */
+
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
+    width: 90%;
+    margin: auto;
+    max-width: 1200px;
 }
 
-/* Carte individuelle */
+
+.title-section {
+    margin-bottom: 40px;
+}
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 20px 0;
+}
+
+.col-sm-6, .col-md-4, .col-lg-3 {
+    padding: 15px;
+}
+
+
 .card {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    flex: 1 1 calc(25% - 20px);
     max-width: 300px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 350px;
+    background-color: #3e206d; /* Mauve foncé pour les cartes */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Ombre subtile */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 2px solid #6a2c70; /* Accent mauve foncé */
 }
 
 .card:hover {
     transform: translateY(-10px);
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 20px rgba(102, 51, 153, 0.5); /* Ombre mauve subtile */
 }
 
-/* Images */
 .card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    border-bottom: 2px solid #9d4edd;
 }
 
-/* Texte dans la carte */
 .card h3 {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
     font-size: 1.5em;
+    color: #d4a5ed;
     margin: 15px 0;
-    color: #343a40;
 }
 
 .card p {
+    text-align: center;
     font-size: 1em;
-    color: #6c757d;
+    color: #dcd6f7;
     margin: 5px 0;
 }
 
-/* Accent sur le texte fort */
 .card p strong {
-    color: #007bff;
+    color: #9d4edd;
 }
 
-/* Espace entre les sections */
-div > h1 {
-    margin-top: 50px;
-}
-
-/* Style des boutons (optionnel si vous ajoutez des actions) */
+/* Boutons */
 .btn {
     display: inline-block;
-    background-color: #007bff;
+    background-color: #7b2cbf;
     color: #ffffff;
     padding: 10px 15px;
     border-radius: 5px;
     text-decoration: none;
     font-size: 1em;
-    transition: background-color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .btn:hover {
-    background-color: #0056b3;
+    background-color: #c77dff; 
+    color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card {
+        flex: 1 1 100%;
+        margin-bottom: 20px;
+    }
+
+    .row {
+        gap: 15px;
+    }
 }

@@ -1,6 +1,8 @@
 {% load static %}
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Jeu de Rôle Médiéval</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
@@ -8,16 +10,29 @@
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
 <body>
-    <div class="page-header">
-        <h1><a href="/">Jeu de Rôle Médiéval</a></h1>
-    </div>
-    <div class="content container">
-        <div class="row">
-            <div class="col-md-8">
-            {% block content %}
-            {% endblock %}
-
+        <nav class="navbar">
+            <a class="navbar-brand" href="#">Jeu de Rôle Médiéval</a>
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="#section1">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link" href="#section2">À propos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#section3">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="#section4">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="banner">
+            <div class="banner-text">
+                <h1>Bienvenue au Jeu de Rôle Médiéval</h1>
+                <p>Explorez, aventurez-vous et découvrez nos incroyables lieux enchantés !</p>
             </div>
+        </div>
+
+    <div class="content container">
+         <div class="row">
+                <div class="col-md-12">
+                    {% block content %}
+                     {% endblock %}
+
+                </div>
         </div>
 
     </div>
